@@ -14,9 +14,9 @@ This repository provides **custom Wazuh decoders** and **alert rules** to detect
 ```
 wazuh-kafka-integration/
 ├── decoders/
-│   └── kafka_decoder.xml       # Custom decoder for Kafka server.log & controller.log
+│   └── local_decoders.xml       # Custom decoder for Kafka server.log & controller.log
 ├── rules/
-│   └── kafka_rules.xml         # Wazuh rules for alerting on Kafka events
+│   └── local_rules.xml         # Wazuh rules for alerting on Kafka events
 └── README.md
 ```
 
