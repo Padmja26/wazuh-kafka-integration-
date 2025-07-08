@@ -1,0 +1,31 @@
+<!--Decoders for creation and deletion of kafka logs.-->
+
+<decoder name="kafka">
+  <prematch> INFO </prematch>
+</decoder>
+
+<decoder name="kafka_child">
+  <parent>kafka</parent>
+  <regex offset="after_parent">[Partition (\w+)-(\d+) broker=(\d+)] </regex>
+  <order>Topicname,partitionid ,brokerid</order>
+</decoder>
+
+<decoder name="kafka2">
+  <prematch> DEBUG </prematch>
+</decoder>
+
+
+<decoder name="kafka_child">
+  <parent>kafka2</parent>
+  <regex offset="after_parent">[Topic Deletion Manager (\d+)] </regex>
+  <order>Manager id</order>
+</decoder>
+
+<decoder name="kafka_child">
+  <parent>kafka2</parent>
+  <regex offset="after_parent">[Topic=(\w+),Partition=(\d+),Replica=(\d+)] </regex>
+  <order>Topicname, partitionid, replicationid</order>
+</decoder>
+
+<!--Jun 13 06:52:51 [2025-06-13 06:52:51,289] INFO [Partition Topic4-0 broker=0] Log loaded for partition Topic4-0 with initial high watermark 0 (kafka.cluster.Partition)-->
+<!--Jun 14 06:47:34 [2025-06-14 06:47:33,587] DEBUG [Topic Deletion Manager 0] Deletion successfully completed for replicas [Topic=Topic3,Partition=0,Replica=0] (kafka.controller.TopicDeletionManager)-->
