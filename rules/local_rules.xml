@@ -1,0 +1,20 @@
+<group name="kafka"> 
+  <rule id= "100001" level="6">
+  <decoded_as>kafka</decoded_as>
+  <field name="Topicname">\d+</field>
+  <field name="partitionid">\d+</field>
+  <field name="brokerid">\d+</field>
+  <description>Topic $(Topicname) Created on Partition $(partitionid) and Broker $(brokerid) </description>
+  </rule>
+</group>
+
+
+<group name="kafka"> 
+  <rule id= "100002" level="6">
+  <decoded_as>kafka2</decoded_as>
+  <field name="Topicname">\d+</field>
+  <field name="partitionid">\d+</field>
+  <!--<field name="brokerid">\d+</field>-->
+  <description>Topic $(Topicname) Deleted on Partition $(partitionid) </description>
+  </rule>
+</group>
